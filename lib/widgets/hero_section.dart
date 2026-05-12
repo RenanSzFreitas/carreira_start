@@ -25,8 +25,8 @@ class HeroSection extends StatelessWidget {
             // Imagem principal com bordas arredondadas (Imagem placeholder via rede)
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.network(
-                'https://images.unsplash.com/photo-1604177091072-b7b677a077f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHByb2Zlc3Npb25hbCUyMHdvcmtpbmclMjBsYXB0b3B8ZW58MXx8fHwxNzc0MjkzNDkyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+              child: Image.asset(
+                'lib/images/home.jpg',
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
