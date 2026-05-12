@@ -1,117 +1,241 @@
 import 'package:flutter/material.dart';
+import '../widgets/competencias/competencias_hero.dart';
+import '../widgets/competencias/autoavaliacao_section.dart';
+import '../widgets/competencias/competencias_tabs.dart';
+import '../widgets/competencias/plano_desenvolvimento.dart';
+import '../widgets/footer.dart';
 
-class CompetenciasPage extends StatefulWidget {
+// IMPORTS DAS OUTRAS PÁGINAS
+import 'home_page.dart';
+import 'curriculo_page.dart';
+import 'entrevista_page.dart';
+import 'cursos_page.dart';
+import 'oportunidades_page.dart';
+
+class CompetenciasPage extends StatelessWidget {
   const CompetenciasPage({super.key});
 
-  @override
-  State<CompetenciasPage> createState() => _CompetenciasPageState();
-}
-
-class _CompetenciasPageState extends State<CompetenciasPage> {
-  final List<Map<String, dynamic>> competencias = [
-    {'nome': 'Comunicação', 'nivel': 0.6},
-    {'nome': 'Trabalho em equipe', 'nivel': 0.8},
-    {'nome': 'Proatividade', 'nivel': 0.5},
-    {'nome': 'Organização', 'nivel': 0.7},
-    {'nome': 'Responsabilidade', 'nivel': 0.9},
-  ];
-
-  void aumentarNivel(int index) {
-    setState(() {
-      if (competencias[index]['nivel'] < 1.0) {
-        competencias[index]['nivel'] += 0.1;
-      }
-    });
-  }
+  static const Color primaryPurple = Color(0xFF7232F2);
 
   @override
   Widget build(BuildContext context) {
-    const Color primaryPurple = Color(0xFF7232F2);
-
     return Scaffold(
+      endDrawer: _buildDrawer(context),
+
       appBar: AppBar(
-        title: const Text('Competências'),
-        backgroundColor: primaryPurple,
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        titleSpacing: 16,
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: primaryPurple,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(
+                Icons.wifi_tethering,
+                color: Colors.white,
+                size: 20,
+              ),
+            ),
+
+            const SizedBox(width: 8),
+
+            const Text(
+              'Carreira Start',
+              style: TextStyle(
+                color: primaryPurple,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ],
+        ),
+        iconTheme: const IconThemeData(color: Colors.black87),
       ),
 
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: competencias.length,
-        itemBuilder: (context, index) {
-          final item = competencias[index];
+      backgroundColor: const Color(0xFFF5F6FA),
 
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: Container(
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            CompetenciasHero(),
+            AutoavaliacaoSection(),
+            CompetenciasTabs(),
+            PlanoDesenvolvimento(),
+            SizedBox(height: 40),
+            Footer(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ==========================
+  // DRAWER
+  // ==========================
+  Widget _buildDrawer(BuildContext context) {
+    return Drawer(
+      backgroundColor: Colors.white,
+      child: SafeArea(
+        child: Column(
+          children: [
+            Padding(
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  )
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisAlignment:
+                MainAxisAlignment.spaceBetween,
                 children: [
-                  // NOME
-                  Text(
-                    item['nome'],
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  const SizedBox(height: 12),
-
-                  // BARRA DE PROGRESSO
-                  LinearProgressIndicator(
-                    value: item['nivel'],
-                    minHeight: 8,
-                    borderRadius: BorderRadius.circular(8),
-                    backgroundColor: Colors.grey[200],
-                    valueColor: const AlwaysStoppedAnimation(primaryPurple),
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  // TEXTO DE PORCENTAGEM
-                  Text(
-                    '${(item['nivel'] * 100).toInt()}% desenvolvido',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 12,
-                    ),
-                  ),
-
-                  const SizedBox(height: 12),
-
-                  // BOTÃO
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton(
-                      onPressed: () => aumentarNivel(index),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: primaryPurple,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: primaryPurple,
+                          borderRadius:
+                          BorderRadius.circular(8),
+                        ),
+                        child: const Icon(
+                          Icons.wifi_tethering,
+                          color: Colors.white,
+                          size: 20,
                         ),
                       ),
-                      child: const Text('Evoluir'),
-                    ),
-                  )
+
+                      const SizedBox(width: 8),
+
+                      const Text(
+                        'Carreira Start',
+                        style: TextStyle(
+                          color: primaryPurple,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () =>
+                        Navigator.pop(context),
+                  ),
                 ],
               ),
             ),
-          );
-        },
+
+            Expanded(
+              child: ListView(
+                children: [
+                  _drawerItem(
+                    icon: Icons.home_outlined,
+                    title: 'Início',
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const HomePage(),
+                        ),
+                      );
+                    },
+                  ),
+
+                  _drawerItem(
+                    icon: Icons.description_outlined,
+                    title: 'Currículo',
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                          const CurriculoPage(),
+                        ),
+                      );
+                    },
+                  ),
+
+                  _drawerItem(
+                    icon: Icons.chat_bubble_outline,
+                    title: 'Entrevista',
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                          const EntrevistaPage(),
+                        ),
+                      );
+                    },
+                  ),
+
+                  _drawerItem(
+                    icon: Icons.school_outlined,
+                    title: 'Cursos',
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                          const CursosPage(),
+                        ),
+                      );
+                    },
+                  ),
+
+                  _drawerItem(
+                    icon: Icons.work_outline,
+                    title: 'Oportunidades',
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                          const OportunidadesPage(),
+                        ),
+                      );
+                    },
+                  ),
+
+                  _drawerItem(
+                    icon: Icons.radar_outlined,
+                    title: 'Competências',
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _drawerItem({
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.grey[700]),
+      title: Text(
+        title,
+        style: TextStyle(color: Colors.grey[800]),
+      ),
+      onTap: onTap,
     );
   }
 }
