@@ -32,8 +32,8 @@ class CompetenciasHero extends StatelessWidget {
           const SizedBox(height: 20),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(
-              'https://images.unsplash.com/photo-1552664730-d307ca884978',
+            child: Image.asset(
+              'lib/images/competencias.jpg',
               height: 180,
               fit: BoxFit.cover,
             ),

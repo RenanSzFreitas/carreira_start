@@ -50,8 +50,8 @@ class EntrevistaHero extends StatelessWidget {
           // Imagem
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(
-              'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1000', // Imagem placeholder
+            child: Image.asset(
+              'lib/images/entrevista.jpg',
               height: 350,
               width: 800,
               fit: BoxFit.cover,
