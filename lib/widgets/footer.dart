@@ -19,15 +19,17 @@ class Footer extends StatelessWidget {
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(6),
+                width: 36,
+                height: 36,
                 decoration: BoxDecoration(
-                  color: primaryPurple,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Icon(
-                  Icons.wifi_tethering,
-                  color: Colors.white,
-                  size: 20,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    'lib/images/icon.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(width: 8),
@@ -91,7 +93,7 @@ class Footer extends StatelessWidget {
           const SizedBox(height: 12),
 
           const Text(
-            'FAQ',
+            'Créditos',
             style: TextStyle(
               color: Colors.white70,
               fontSize: 14,

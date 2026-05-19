@@ -29,15 +29,17 @@ class CompetenciasPage extends StatelessWidget {
         title: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(4),
+              width: 36,
+              height: 36,
               decoration: BoxDecoration(
-                color: primaryPurple,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Icon(
-                Icons.wifi_tethering,
-                color: Colors.white,
-                size: 20,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  'lib/images/icon.png',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
 
@@ -91,16 +93,17 @@ class CompetenciasPage extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(4),
+                        width: 36,
+                        height: 36,
                         decoration: BoxDecoration(
-                          color: primaryPurple,
-                          borderRadius:
-                          BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Icon(
-                          Icons.wifi_tethering,
-                          color: Colors.white,
-                          size: 20,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'lib/images/icon.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
 
@@ -207,13 +210,16 @@ class CompetenciasPage extends StatelessWidget {
                       );
                     },
                   ),
-
-                  _drawerItem(
-                    icon: Icons.radar_outlined,
-                    title: 'Competências',
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+                  Container(
+                    color: primaryPurple.withOpacity(0.1),
+                    child: _drawerItem(
+                      icon: Icons.radar_outlined,
+                      title: 'Competências',
+                      color: primaryPurple,
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -228,13 +234,11 @@ class CompetenciasPage extends StatelessWidget {
     required IconData icon,
     required String title,
     required VoidCallback onTap,
+    Color? color,
   }) {
     return ListTile(
-      leading: Icon(icon, color: Colors.grey[700]),
-      title: Text(
-        title,
-        style: TextStyle(color: Colors.grey[800]),
-      ),
+      leading: Icon(icon, color: color ?? Colors.grey[700]),
+      title: Text(title, style: TextStyle(color: color ?? Colors.grey[800], fontWeight: color != null ? FontWeight.bold : FontWeight.normal)),
       onTap: onTap,
     );
   }
