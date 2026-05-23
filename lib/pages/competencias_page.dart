@@ -137,13 +137,7 @@ class CompetenciasPage extends StatelessWidget {
                     title: 'Início',
                     onTap: () {
                       Navigator.pop(context);
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const HomePage(),
-                        ),
-                      );
+                      Navigator.pop(context); // Volta para a HomePage
                     },
                   ),
 
