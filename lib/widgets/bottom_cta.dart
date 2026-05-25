@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../pages/curriculo_page.dart';
 
 class BottomCTA extends StatelessWidget {
   const BottomCTA({super.key});
@@ -54,8 +55,12 @@ class BottomCTA extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                // Aqui você pode navegar depois
-                // Navigator.pushNamed(context, '/curriculo');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const CurriculoPage(),
+                  ),
+                );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

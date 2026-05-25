@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../pages/curriculo_page.dart';
+import '../../pages/entrevista_page.dart';
+import '../../pages/cursos_page.dart';
+import '../../pages/oportunidades_page.dart';
+
 class CardsSection extends StatelessWidget {
   const CardsSection({super.key});
 
@@ -46,6 +51,15 @@ class CardsSection extends StatelessWidget {
             description:
             'Aprenda a criar um currículo profissional que chama atenção dos recrutadores',
             primaryPurple: primaryPurple,
+
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const CurriculoPage(),
+                ),
+              );
+            },
           ),
 
           const SizedBox(height: 16),
@@ -57,6 +71,15 @@ class CardsSection extends StatelessWidget {
             description:
             'Dicas e exemplos de respostas para suas primeiras entrevistas de emprego',
             primaryPurple: primaryPurple,
+
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const EntrevistaPage(),
+                ),
+              );
+            },
           ),
 
           const SizedBox(height: 16),
@@ -68,6 +91,15 @@ class CardsSection extends StatelessWidget {
             description:
             'Descubra cursos e capacitações que aumentam suas chances no mercado',
             primaryPurple: primaryPurple,
+
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const CursosPage(),
+                ),
+              );
+            },
           ),
 
           const SizedBox(height: 16),
@@ -79,6 +111,15 @@ class CardsSection extends StatelessWidget {
             description:
             'Conheça programas de jovem aprendiz, estágios e primeiro emprego',
             primaryPurple: primaryPurple,
+
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const OportunidadesPage(),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -92,6 +133,7 @@ class FeatureCard extends StatelessWidget {
   final String title;
   final String description;
   final Color primaryPurple;
+  final VoidCallback onTap;
 
   const FeatureCard({
     super.key,
@@ -100,11 +142,17 @@ class FeatureCard extends StatelessWidget {
     required this.title,
     required this.description,
     required this.primaryPurple,
+    required this.onTap,
   });
 
   @override
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      borderRadius: BorderRadius.circular(16),
+      onTap: onTap,
+
+      child: Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
@@ -169,6 +217,7 @@ class FeatureCard extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ),
+  );
   }
 }

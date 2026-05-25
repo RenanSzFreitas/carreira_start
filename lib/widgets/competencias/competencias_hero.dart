@@ -15,7 +15,7 @@ class CompetenciasHero extends StatelessWidget {
               color: const Color(0xFFEDE7FF),
               borderRadius: BorderRadius.circular(16),
             ),
-            child: const Icon(Icons.star_border, color: Color(0xFF7B61FF)),
+            child: const Icon(Icons.radar_outlined, color: Color(0xFF7B61FF)),
           ),
           const SizedBox(height: 16),
           const Text(

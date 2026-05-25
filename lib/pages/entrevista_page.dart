@@ -8,10 +8,12 @@ import '../widgets/entrevista/warning_section.dart';
 import '../widgets/footer.dart';
 
 // IMPORTS DAS PÁGINAS (Para o Drawer)
+import 'home_page.dart';
 import 'curriculo_page.dart';
 import 'cursos_page.dart';
 import 'oportunidades_page.dart';
 import 'competencias_page.dart';
+import 'creditos_page.dart';
 
 class EntrevistaPage extends StatelessWidget {
   const EntrevistaPage({super.key});
@@ -126,10 +128,16 @@ class EntrevistaPage extends StatelessWidget {
                   _drawerItem(
                     icon: Icons.home_outlined,
                     title: 'Início',
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pop(context); // Volta para a HomePage
-                    },
+                      onTap: () {
+                        Navigator.pop(context);
+
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const HomePage(),
+                          ),
+                        );
+                      },
                   ),
                   _drawerItem(
                     icon: Icons.description_outlined,
@@ -171,6 +179,17 @@ class EntrevistaPage extends StatelessWidget {
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const CompetenciasPage()));
+                    },
+                  ),
+                  _drawerItem(
+                    icon: Icons.groups_outlined,
+                    title: 'Créditos',
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const CreditosPage()),
+                      );
                     },
                   ),
                 ],

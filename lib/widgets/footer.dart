@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/creditos_page.dart';
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
@@ -58,28 +59,6 @@ class Footer extends StatelessWidget {
 
           const SizedBox(height: 32),
 
-          // LINKS ÚTEIS
-          const Text(
-            'Links Úteis',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-
-          const SizedBox(height: 12),
-
-          const Text(
-            'Sobre Nós\n\nContato\n\nBlog',
-            style: TextStyle(
-              color: Colors.white70,
-              fontSize: 14,
-            ),
-          ),
-
-          const SizedBox(height: 32),
-
           // RECURSOS
           const Text(
             'Recursos',
@@ -92,11 +71,22 @@ class Footer extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          const Text(
-            'Créditos',
-            style: TextStyle(
-              color: Colors.white70,
-              fontSize: 14,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const CreditosPage(),
+                ),
+              );
+            },
+
+            child: const Text(
+              'Créditos',
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 14,
+              ),
             ),
           ),
         ],

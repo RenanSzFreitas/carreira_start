@@ -8,11 +8,13 @@ import '../widgets/bottom_cta.dart';
 import '../widgets/footer.dart';
 
 // IMPORTS DAS PÁGINAS
+import 'home_page.dart';
 import 'curriculo_page.dart';
 import 'entrevista_page.dart';
 import 'cursos_page.dart';
 import 'oportunidades_page.dart';
 import 'competencias_page.dart';
+import 'creditos_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -193,6 +195,17 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const CompetenciasPage()),
+                      );
+                    },
+                  ),
+                  _drawerItem(
+                    icon: Icons.groups_outlined,
+                    title: 'Créditos',
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const CreditosPage()),
                       );
                     },
                   ),

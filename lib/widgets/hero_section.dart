@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../pages/curriculo_page.dart';
+import '../../pages/oportunidades_page.dart';
+
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
 
@@ -72,7 +75,14 @@ class HeroSection extends StatelessWidget {
                   backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const CurriculoPage(),
+                    ),
+                  );
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -92,7 +102,14 @@ class HeroSection extends StatelessWidget {
                   side: const BorderSide(color: Colors.white, width: 1.5),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const OportunidadesPage(),
+                    ),
+                  );
+                },
                 child: const Text('Ver Oportunidades', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
               ),
             ),

@@ -13,6 +13,7 @@ import 'curriculo_page.dart';
 import 'entrevista_page.dart';
 import 'oportunidades_page.dart';
 import 'competencias_page.dart';
+import 'creditos_page.dart';
 
 class CursosPage extends StatelessWidget {
   const CursosPage({super.key});
@@ -136,7 +137,13 @@ class CursosPage extends StatelessWidget {
                     title: 'Início',
                     onTap: () {
                       Navigator.pop(context);
-                      Navigator.pop(context); // Volta para a HomePage
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const HomePage(),
+                        ),
+                      );
                     },
                   ),
                   _drawerItem(
@@ -178,6 +185,17 @@ class CursosPage extends StatelessWidget {
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const CompetenciasPage()));
+                    },
+                  ),
+                  _drawerItem(
+                    icon: Icons.groups_outlined,
+                    title: 'Créditos',
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const CreditosPage()),
+                      );
                     },
                   ),
                 ],
